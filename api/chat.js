@@ -30,8 +30,16 @@ const SYS_PROMPT =
   "- If something genuinely is not covered, say so briefly and friendly, then offer what you CAN help with. Do not stonewall.\n" +
   "- Where it helps, point the reader to the relevant report tab by name (for example 'the Backlinks tab').\n" +
   "- Use dataforseo_serp only for live/current rankings the report would not already contain.\n\n" +
-  "Voice: warm, confident, plain-spoken, a little personality is good. Lead with the answer. Keep it tight, usually under " +
-  "about 160 words, unless the user asks for depth. Never use the em dash character.";
+  "Your readers: Mentalyc's small founding team, not a marketing department. Mentalyc is an Entrepreneur First startup in " +
+  "San Francisco, founded by Maria Szandrach (CEO, business and growth) and Georgi Urumov (co-founder, engineering and data), " +
+  "maybe with one marketing or content person. So expect sharp, busy, informal questions, sometimes blunt or existential " +
+  "(for example 'are we cooked?', 'whats the one thing', 'is it worth it'), sometimes very tactical (for example 'what do I " +
+  "build first', 'how much dev work', 'who do I hire'), and often loosely worded with typos, slang or fragments. ALWAYS read " +
+  "the intent generously and answer the real question. Never nitpick phrasing or ask them to rephrase unless it is genuinely " +
+  "impossible to tell what they mean (then give your best guess and offer a quick clarification). For existential or ROI " +
+  "questions be honest but encouraging where the data supports it; for build questions get concrete.\n\n" +
+  "Voice: warm, confident, plain-spoken, a little personality is good. Lead with the answer in the first sentence. Keep it " +
+  "tight, usually under about 160 words, unless the user asks for depth. Never use the em dash character.";
 
 let KB = null;
 function kb() {
@@ -40,11 +48,33 @@ function kb() {
 }
 // query expansion so casual phrasing still hits the right material
 const EXPAND = {
-  beat: "competitors win mechanism", beaten: "competitors win", lose: "beaten competitors", losing: "beaten competitors",
-  who: "about prepared author", author: "about prepared", made: "about prepared methodology", wrote: "about prepared",
-  long: "about methodology thorough", time: "about methodology thorough", took: "about methodology",
-  cost: "pricing conversion budget", links: "backlinks referring", penalty: "penalty diagnosis rankings",
-  build: "page blueprints silo", recommend: "ai recommendation cited named", opportunity: "code cluster opportunity"
+  beat: "competitors win mechanism", beaten: "competitors win", beating: "competitors win", lose: "beaten competitors",
+  losing: "beaten declining", lost: "decline beaten", eat: "competitors win decline", eating: "competitors win",
+  cooked: "fixable upside recovery penalty", screwed: "fixable upside recovery", doomed: "fixable upside recovery",
+  dead: "fixable upside recovery", trouble: "fixable upside diagnosis", bad: "diagnosis fixable", recover: "fixable upside roadmap",
+  recovery: "fixable upside roadmap", recoverable: "fixable upside", fixable: "fixable upside", fix: "fixable roadmap build",
+  worth: "upside fixable roi", upside: "fixable opportunity roadmap", roi: "upside fixable opportunity", return: "upside roi",
+  revenue: "upside conversion opportunity", money: "upside conversion pricing", traffic: "decline clicks fixable",
+  clicks: "ai overview decline", who: "about prepared author audience", author: "about prepared", made: "about prepared methodology",
+  make: "about methodology", wrote: "about prepared", created: "about prepared", build_report: "about methodology",
+  long: "about methodology timeline roadmap", time: "about methodology timeline", took: "about methodology",
+  fast: "timeline roadmap", quick: "timeline roadmap", soon: "timeline roadmap", when: "timeline roadmap", results: "timeline roadmap",
+  cost: "pricing conversion cro", price: "pricing cro", pricing: "cro conversion", convert: "conversion cro funnel",
+  links: "backlinks referring anchors", link: "backlinks referring", backlink: "backlinks referring anchors",
+  toxic: "toxic anchors disavow", anchor: "anchors backlinks toxic", disavow: "toxic anchors", spam: "spam toxic backlinks",
+  penalty: "penalty fixable diagnosis", banned: "penalty diagnosis", build: "page blueprints silo programmatic",
+  hire: "page blueprints roadmap", dev: "programmatic page blueprints", developer: "programmatic page blueprints",
+  programmatic: "code page blueprints", schema: "page blueprints cro", recommend: "ai recommendation cited named",
+  cited: "ai recommendation visibility", citation: "ai recommendation visibility", named: "ai recommendation visibility",
+  ai: "ai overview visibility recommendation", gemini: "ai visibility recommendation", chatgpt: "ai visibility recommendation",
+  perplexity: "ai visibility recommendation", opportunity: "code cluster opportunity roadmap", biggest: "code cluster opportunity",
+  priority: "roadmap opportunity build", first: "roadmap opportunity build", threat: "competitors win", competitor: "competitors win",
+  rival: "competitors win", twofold: "competitors win", supanote: "competitors win", blueprint: "competitors win codes",
+  upheal: "competitors", code: "code cluster icd programmatic", codes: "code cluster icd", icd: "code cluster icd",
+  cpt: "code cluster icd", cluster: "code cluster topical", funnel: "funnel tofu mofu bofu", gate: "gating worksheets funnel",
+  gated: "gating worksheets", worksheet: "gating funnel", reddit: "community reddit", community: "community reddit",
+  reviewer: "clinical reviewer trust", review: "clinical reviewer competitors", trust: "clinical reviewer", brand: "brand awareness pr",
+  awareness: "brand pr", pr: "digital pr awareness", press: "digital pr"
 };
 function expand(words) {
   const out = words.slice();
