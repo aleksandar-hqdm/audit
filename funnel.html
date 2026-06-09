@@ -1,0 +1,51 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Funnel | Mentalyc Recovery Report</title>
+<link rel="stylesheet" href="assets/style.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+</head><body>
+<header class="topbar">
+  <div class="brand">Mentalyc <span>Growth Recovery</span></div>
+  <div class="meta">Prepared by Aleksandar Ackovski / Growth Radical &middot; June 2026 &middot; DataForSEO + public sources</div>
+</header>
+<nav class="mainnav"><a class="" href="index.html">Overview</a>
+<a class="" href="diagnosis.html">Diagnosis</a>
+<a class="" href="keyword-universe.html">Keyword Universe</a>
+<a class="active" href="funnel.html">Funnel</a>
+<a class="" href="bottom-funnel.html">Bottom of Funnel</a>
+<a class="" href="ai-visibility.html">AI Visibility</a>
+<a class="" href="competitors.html">Competitors</a>
+<a class="" href="how-they-win.html">How They Win</a>
+<a class="" href="page-blueprints.html">Page Blueprints</a>
+<a class="" href="content-onpage.html">Content & On-Page</a>
+<a class="" href="digital-pr.html">Digital PR</a>
+<a class="" href="backlinks.html">Backlinks</a>
+<a class="" href="cro.html">CRO & Metadata</a>
+<a class="" href="roadmap.html">Roadmap</a></nav>
+<main class="wrap">
+<h1>Funnel: top, middle, bottom</h1>
+<div class="callout good"><strong>The recovery in one line:</strong> Mentalyc built a world-class top of funnel, then AI commoditized it. Build the bottom (comparison, exact-match BOFU, and code silos), <b>un-gate the middle so it ranks</b>, reclaim the mental-health code cluster, turn the top into tools that capture, and stop measuring success by raw TOFU traffic.</div>
+<p class="lede">Still heavily top-of-funnel, but the funnel is more complete than it looks: 493 blog (TOFU), 122 worksheets and examples (MOFU), product pages and an ROI calculator. The worksheets are even <b>email-gated</b>, so they do capture leads. The real gaps are at the bottom (thin BOFU, no comparison or code silo) and a tradeoff in the middle: the gating leaves thin on-page content, so the worksheets under-rank (you sit at #9 for "emdr note template" while Supanote, which shows the full template free, is #1).</p>
+<div class="kpirow">
+<div class="kpi warn"><div class="kpi-v">493</div><div class="kpi-l">TOFU blog pages</div><div class="kpi-s">AI Overviews take the clicks</div></div>
+<div class="kpi good"><div class="kpi-v">122</div><div class="kpi-l">MOFU resources (email-gated)</div><div class="kpi-s">103 worksheets + 19 examples; leads ARE captured</div></div>
+<div class="kpi bad"><div class="kpi-v">12</div><div class="kpi-l">BOFU pages</div><div class="kpi-s">thin; no comparison or code silo</div></div>
+<div class="kpi warn"><div class="kpi-v">#9 vs #1</div><div class="kpi-l">Your rank for 'emdr note template'</div><div class="kpi-s">Supanote wins with a free, ungated page</div></div>
+</div>
+<div class="twocol">
+<div><div class="chartbox" style="height:260px"><canvas id="funnelD"></canvas></div></div>
+<div class="sidenote"><h3>The middle captures leads, but under-ranks</h3><p>Mentalyc has the broad top (493 blog) and a real mid layer (122 worksheets and examples), and the worksheets <b>are email-gated</b>, so they capture leads. The tradeoff: the gated pages show thin content (~300-680 words) vs competitors&#39; full free templates (1,600+), so they rank lower. The real gap is the <b>bottom</b>, thin BOFU with no comparison or code silo, not the middle.</p></div>
+</div>
+<h2>What each stage needs</h2>
+<table class="data"><thead><tr><th>Stage</th><th>Today</th><th>The gap</th><th>Fix</th></tr></thead><tbody><tr><td><b>TOFU</b> (awareness)</td><td>493 reference articles; real traffic and rankings</td><td>The blog posts capture no email (only the worksheets do), and the clicks are falling as AI Overviews answer these reference queries in-page</td><td>Turn flagship reference pages into interactive tools (a note generator, an ICD-10 / CPT lookup) that AI Overviews cannot replace; and build the mental-health code pages you are missing</td></tr><tr><td><b>MOFU</b> (evaluation)</td><td>122 worksheets/examples; worksheets ARE email-gated</td><td>The hard email gate leaves thin on-page content, so the worksheets under-rank (#9 for 'emdr note template'); no nurture; no comparison content</td><td>Un-gate the worksheets so they rank (competitors show templates free and out-rank you); capture demand through soft opt-ins and the trial, not a hard wall; add nurture and 'vs' / 'best AI scribe' content</td></tr><tr><td><b>BOFU</b> (decision)</td><td>~12 product/commercial pages; strong messaging and trust signals</td><td>No competitor comparison pages and no sample output; pricing is not above the fold on the homepage (it sits near the footer, though there is a clear Pricing link)</td><td>Comparison + 'alternatives' pages, surface pricing higher on the homepage, add a sample note, own-brand defense</td></tr></tbody></table>
+<div class="whowins"><span>Who is winning</span> Twofold and Supanote built the BOFU and comparison layer Mentalyc lacks (competitor-review pages, 'hipaa compliant ai therapy notes', 'ai therapy note generator'), and they show their templates free (no gate), which out-ranks Mentalyc's gated worksheets. The gap is the bottom of the funnel plus a content-vs-capture tradeoff in the middle, not a missing middle.</div>
+<p><a href="cro.html">Funnel + CRO fixes &rarr;</a> &middot; <a href="content-onpage.html">Re-tooling the content &rarr;</a></p>
+</main>
+<footer class="foot">Local working draft for review. Estimates from public tools (DataForSEO, US organic), to be reconciled to first-party SEMrush / GSC / GA4. Not for distribution.</footer>
+<script>
+new Chart(document.getElementById("funnelD"),{"type": "doughnut", "data": {"labels": ["TOFU blog (493)", "MOFU (122, gated)", "BOFU (12)"], "datasets": [{"data": [493, 122, 12], "backgroundColor": ["#e4572e", "#e9c46a", "#2a9d8f"]}]}, "options": {"responsive": true, "maintainAspectRatio": false, "plugins": {"legend": {"position": "right"}}}});
+</script>
+<script>if(window.mermaid){mermaid.initialize({startOnLoad:true,theme:'default',flowchart:{useMaxWidth:true,htmlLabels:true,rankSpacing:95,nodeSpacing:38,padding:18}});}</script>
+</body></html>

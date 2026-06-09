@@ -1,0 +1,151 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Page Blueprints | Mentalyc Recovery Report</title>
+<link rel="stylesheet" href="assets/style.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+</head><body>
+<header class="topbar">
+  <div class="brand">Mentalyc <span>Growth Recovery</span></div>
+  <div class="meta">Prepared by Aleksandar Ackovski / Growth Radical &middot; June 2026 &middot; DataForSEO + public sources</div>
+</header>
+<nav class="mainnav"><a class="" href="index.html">Overview</a>
+<a class="" href="diagnosis.html">Diagnosis</a>
+<a class="" href="keyword-universe.html">Keyword Universe</a>
+<a class="" href="funnel.html">Funnel</a>
+<a class="" href="bottom-funnel.html">Bottom of Funnel</a>
+<a class="" href="ai-visibility.html">AI Visibility</a>
+<a class="" href="competitors.html">Competitors</a>
+<a class="" href="how-they-win.html">How They Win</a>
+<a class="active" href="page-blueprints.html">Page Blueprints</a>
+<a class="" href="content-onpage.html">Content & On-Page</a>
+<a class="" href="digital-pr.html">Digital PR</a>
+<a class="" href="backlinks.html">Backlinks</a>
+<a class="" href="cro.html">CRO & Metadata</a>
+<a class="" href="roadmap.html">Roadmap</a></nav>
+<main class="wrap">
+<h1>Page blueprints: exactly what to build</h1>
+<p class="lede">The competitors&#39; pages are not one-offs; each silo runs a repeatable template. Here is each one reverse-engineered into a buildable spec: the URL and hub, the section-by-section skeleton, the required elements and schema, the internal-linking pattern, and the naming convention. Hand these to a content or dev team and they can ship.</p>
+<h2>The target architecture: hub-and-spoke silos</h2>
+<p>Every competitor silo runs the same shape: a <b>hub</b> page that lists and links every <b>spoke</b> (18 to 33 internal links per hub), and each spoke links back to the hub, to 6-10 sibling pages, and down to a product CTA. That dense interlinking is what builds topical authority and lifts the whole cluster. Read the map top to bottom: <b style='color:#1c6e63'>green</b> silos are already live on mentalyc.com (worksheets and note examples); <b style='color:#c0392b'>red</b> are the high-value silos still to build.</p>
+<pre class="mermaid">%%{init: {'flowchart': {'useMaxWidth': false, 'htmlLabels': true, 'rankSpacing': 46, 'nodeSpacing': 26, 'curve': 'basis'}}}%%
+flowchart TD
+  HOME([mentalyc.com homepage]):::home
+  subgraph L1["LIVE: Worksheets silo  (hub + 103 spokes)"]
+    direction LR
+    A0[Hub: Worksheets and Cheatsheets]:::have --> A1[DBT planner]:::have
+    A0 --> A2[Anxiety worksheet]:::have
+    A0 --> A3[plus ~100 more]:::have
+  end
+  subgraph L2["LIVE: Note-Examples silo  (hub + 19 spokes)"]
+    direction LR
+    B0[Hub: Note Examples]:::have --> B1[SOAP example]:::have
+    B0 --> B2[DAP example]:::have
+    B0 --> B3[plus ~17 more]:::have
+  end
+  subgraph L3["BUILD: Code silo  (~133k per mo; you rank on 1 of 10 today)"]
+    direction LR
+    C0[Hub: Mental-Health Coding]:::build --> C1[Anxiety ICD-10]:::build
+    C0 --> C2[CPT 90837]:::build
+    C0 --> C3[plus ~201 codes]:::build
+    C1 -. 6-10 sibling links .- C2
+  end
+  subgraph L4["BUILD: Compare / Alternatives silo  (link magnet)"]
+    direction LR
+    D0[Hub: Compare AI Scribes]:::build --> D1[Mentalyc vs Upheal]:::build
+    D0 --> D2[Best Upheal alternative]:::build
+  end
+  subgraph L5["BUILD: Answers / Wiki silo  (AI-Overview capture)"]
+    direction LR
+    E0[Hub: Answers]:::build --> E1[Are AI notes HIPAA compliant?]:::build
+    E0 --> E2[Do AI notes pass insurance?]:::build
+  end
+  CTA([Every spoke links down to the product / Try Mentalyc free]):::p
+  HOME --> L1 --> L2 --> L3 --> L4 --> L5 --> CTA
+  classDef home fill:#264653,color:#fff,font-weight:bold;
+  classDef p fill:#2a9d8f,color:#fff,font-weight:bold;
+  classDef have fill:#e7f5ee,stroke:#1c6e63,color:#14532d;
+  classDef build fill:#fdecea,stroke:#c0392b,color:#7b241c;</pre>
+<div class="whowins"><span>Who is winning</span> Twofold runs five such hubs (medical-codes, compare, templates, solutions, ai-scribe-wiki); Supanote runs four (cpt-codes, templates, worksheets, plus BOFU pages). Mentalyc runs hubs on worksheets and examples, but zero of these high-value silos: codes, compare, answers.</div>
+<h2>These are systematic templates (the proof)</h2>
+<p>Element consistency across the pages sampled in each silo. High consistency = a real, repeatable template.</p>
+<table class="data"><thead><tr><th>Silo (sampled)</th><th>Pages</th><th>Avg words</th><th>Avg H2</th><th>Has table</th><th>Has FAQ schema</th><th>Has author</th></tr></thead><tbody><tr><td>supanote /blog</td><td>2</td><td>799</td><td>3</td><td>0/2</td><td>1/2</td><td>1/2</td></tr><tr><td>supanote /bofu</td><td>3</td><td>1064</td><td>6</td><td>0/3</td><td>3/3</td><td>0/3</td></tr><tr><td>supanote /cpt-codes</td><td>3</td><td>1374</td><td>9</td><td>0/3</td><td>2/3</td><td>2/3</td></tr><tr><td>supanote /templates</td><td>2</td><td>1018</td><td>2</td><td>0/2</td><td>1/2</td><td>1/2</td></tr><tr><td>twofold /ai-scribe-wiki</td><td>2</td><td>1226</td><td>2</td><td>1/2</td><td>0/2</td><td>1/2</td></tr><tr><td>twofold /compare</td><td>4</td><td>1579</td><td>8</td><td>2/4</td><td>3/4</td><td>3/4</td></tr><tr><td>twofold /medical-codes</td><td>4</td><td>1565</td><td>9</td><td>3/4</td><td>3/4</td><td>3/4</td></tr><tr><td>twofold /solutions</td><td>2</td><td>4358</td><td>6</td><td>0/2</td><td>2/2</td><td>0/2</td></tr><tr><td>twofold /templates</td><td>2</td><td>1087</td><td>6</td><td>1/2</td><td>1/2</td><td>1/2</td></tr></tbody></table>
+<h2>Mentalyc vs competition: the page system at a glance</h2>
+<p>One screen of what each company has actually built. Red marks a Mentalyc gap.</p>
+<table class="data"><thead><tr><th>Dimension</th><th>Mentalyc</th><th>Twofold</th><th>Supanote</th></tr></thead><tbody><tr><td>Code / CPT silo</td><td><span class='miss'>/icd-10-codes (empty stub)</span></td><td><b>/medical-codes (191)</b></td><td>/cpt-codes (22)</td></tr><tr><td>Templates / worksheets silo</td><td><b style='color:#1c6e63'>/worksheets-and-cheatsheets (103) + /note-examples (19)</b></td><td>/templates (136)</td><td>/templates + /worksheets (28)</td></tr><tr><td>Comparison silo</td><td><span class='miss'>none</span></td><td><b>/compare (53)</b></td><td>/therapists-review</td></tr><tr><td>Solutions / use-case silo</td><td><span class='miss'>none</span></td><td>/solutions (129)</td><td>landing pages</td></tr><tr><td>Q&A / wiki silo</td><td><span class='miss'>none</span></td><td>/ai-scribe-wiki (25)</td><td>in /blog</td></tr><tr><td>Exact-match BOFU pages</td><td><span class='miss'>Broad product pages only</span></td><td>in /solutions</td><td><b>/hipaa-compliant-ai-therapy-notes +</b></td></tr><tr><td>Hub-and-spoke internal linking</td><td>Partial (worksheets/examples only)</td><td>18-33 links/hub</td><td>18-33 links/hub</td></tr><tr><td>Code-page template</td><td><span class='miss'>stub, no code pages</span></td><td>1,565w, table, FAQ, author</td><td>1,374w, FAQ, author, reimbursement</td></tr><tr><td>FAQ schema consistency</td><td><span class='miss'>Inconsistent</span></td><td>Consistent</td><td>Consistent</td></tr><tr><td>BOFU page type + schema</td><td><span class='miss'>Broad product pages, no Product/Rating schema</span></td><td>In /solutions (Service schema)</td><td><b>Exact-match URL + Product schema + FAQ</b></td></tr><tr><td>Field result (sample term)</td><td><span class='miss'>Mostly absent on codes; #7 'hipaa ai therapy notes'</span></td><td>Ranks codes; #1 'heidi review'</td><td><b>#1 MSE, emdr template, hipaa notes</b></td></tr></tbody></table>
+<div class="whowins"><span>Who is winning</span> Mentalyc already matches or leads on templates/worksheets and runs proper hubs there, so the capability exists. The specific gaps are codes (a stub), comparison, exact-match BOFU, and Q&A. All buildable, and your domain authority (rank 252, ahead of both) means the same page should rank better for you than for them.</div>
+<h2>Does the system work in the field? Rankings vs Mentalyc</h2>
+<p>Real current rankings on the exact terms where each competitor applied a silo, head-to-head with Mentalyc. The pattern is consistent: where they built the silo, they rank and <b>Mentalyc is absent or behind</b>. Where Mentalyc did build a focused page it competes or leads ('psychotherapy notes software' #4), which is the whole point: with the silo plus your stronger authority, these are winnable.</p>
+<table class="data"><thead><tr><th>Term (where silo applied)</th><th>Silo type</th><th>Competitor</th><th>Mentalyc</th><th>SERP #1</th></tr></thead><tbody><tr><td>anxiety icd 10</td><td>Code silo</td><td>Blueprint #9</td><td><span class='miss'>absent</span></td><td>icd10data.com</td></tr><tr><td>90837 cpt code</td><td>CPT silo</td><td>Supanote #11</td><td><span class='miss'>absent</span></td><td>apaservices.org</td></tr><tr><td>icd 10 code for transaminitis</td><td>Code silo</td><td>Trytwofold #5</td><td><span class='miss'>absent</span></td><td>icd10data.com</td></tr><tr><td>mental status exam examples</td><td>Reference silo</td><td>Supanote #1</td><td><span class='miss'>absent</span></td><td>supanote.ai</td></tr><tr><td>heidi ai review</td><td>Compare silo</td><td>Trytwofold #12</td><td><span class='miss'>absent</span></td><td>deepcura.com</td></tr><tr><td>simplepractice ai review</td><td>Compare silo</td><td>Trytwofold <span class='miss'>-</span></td><td><b style='color:#1c6e63'>#3</b></td><td>reddit.com</td></tr><tr><td>hipaa compliant ai therapy notes</td><td>BOFU exact-match</td><td>Supanote #1</td><td><b style='color:#1c6e63'>#7</b></td><td>supanote.ai</td></tr><tr><td>psychotherapy notes software</td><td>BOFU exact-match</td><td>Supanote #12</td><td><b style='color:#1c6e63'>#4</b></td><td>simplepractice.com</td></tr><tr><td>emdr note template</td><td>Templates silo</td><td>Supanote #1</td><td><b style='color:#1c6e63'>#9</b></td><td>supanote.ai</td></tr><tr><td>group therapy notes template</td><td>Templates silo</td><td>Supanote #2</td><td><b style='color:#1c6e63'>#6</b></td><td>theraplatform.com</td></tr><tr><td>are ai therapy notes hipaa compliant</td><td>Answers/wiki</td><td>Supanote #1</td><td><span class='miss'>absent</span></td><td>supanote.ai</td></tr><tr><td>90791 cpt code</td><td>CPT silo</td><td>Supanote <span class='miss'>-</span></td><td><span class='miss'>absent</span></td><td>cms.gov</td></tr></tbody></table>
+<div class="whowins"><span>Who is winning</span> Across the code terms tested Mentalyc ranks on only one (its lone F43.23 post at #3) and is absent on the rest, while authority sites (icd10data, NCBI, the AMA) hold #1 and the competitor silos rank beneath them. On reference, templates, exact-match BOFU and Q&A, the competitor silo pages take #1 (Supanote owns 'mental status exam examples', 'emdr note template', 'hipaa compliant ai therapy notes', 'are AI notes HIPAA compliant') while Mentalyc is absent or mid-page. The system works; you run it on worksheets and examples but not yet on codes, comparison or BOFU.</div>
+<h2>The six blueprints</h2>
+<div class="bp"><div class="bp-head"><h3><span class="bptag prog">PROGRAMMATIC</span>A. ICD-10 / CPT code detail page</h3><div class="sub">Silo hub: /icd-10 and /cpt-codes. The ~133k/mo cluster you are mostly absent from.</div></div><div class="bp-body"><div class="ev"><b>Evidence:</b> Twofold /medical-codes pages avg <b>1,565 words, 9 H2, a table, FAQ schema, author</b> (3-4 of 4 sampled); Supanote /cpt-codes add <b>reimbursement rates</b>. Hubs ('Medical Coding Hub', 'Guide to CPT Codes') interlink 18-33 spokes.</div><div class="callout bad" style="margin:8px 0 10px;font-size:13px"><b>Mentalyc now:</b> You have an <code>/icd-10-codes</code> URL but it is an <b>empty stub</b> (no H1, no code pages), plus a few ICD posts loose in /blog. <b>Of 10 code SERPs tested, Mentalyc ranks on just one</b> (its lone F43.23 post at #3); on anxiety, depression, ADHD, bipolar and OCD ICD-10 and on 90837 CPT it is absent, with icd10data, NCBI and the AMA holding #1. You run hubs elsewhere, so this is populate-and-wire, not a new capability.</div><div class="bp-grid"><div><div class="note" style="font-size:12px;color:#5a6678;margin-bottom:4px">BUILD THIS</div><div class="skeleton"><span class="note">URL</span> /icd-10/f41-1-generalized-anxiety   <span class="note">(hub /icd-10)</span>
+<span class="h1">H1</span>  F41.1 ICD-10 Code: Generalized Anxiety Disorder
+<span class="el">[box]</span> Quick answer: definition + billable? <span class="note">(AIO-extractable)</span>
+<span class="h2">H2</span>  What is the F41.1 code?
+<span class="h2">H2</span>  Diagnostic criteria        <span class="el">[TABLE]</span>
+<span class="h2">H2</span>  When to use it (scenarios)
+<span class="h2">H2</span>  How to document the session <span class="el">[note example]</span>
+<span class="h2">H2</span>  Reimbursement & billing    <span class="el">[TABLE]</span>
+<span class="h2">H2</span>  Common coding mistakes
+<span class="h2">H2</span>  Related codes  <span class="el">[6-10 sibling links]</span>
+<span class="el">FAQ</span>  (FAQPage) "Is F41.1 billable?" "F41.1 vs F41.9?"
+<span class="note">[byline]</span> Reviewed by [LCSW], updated [date]
+<span class="cta">[CTA]</span> Generate a compliant F41.1 note &rarr; Try Mentalyc</div></div><div><div class="note" style="font-size:12px;color:#5a6678;margin-bottom:4px">REQUIRED ELEMENTS</div><ul class="chk"><li>Schema: MedicalWebPage + FAQPage + BreadcrumbList + Person</li><li>~1,400-1,600 words</li><li>1-2 tables (criteria, reimbursement)</li><li>Reviewer byline + visible updated date (YMYL E-E-A-T)</li><li>Hub link + 6-10 sibling-code links + product CTA</li></ul><p style="font-size:13px;margin-top:10px"><b>Why it wins:</b> It is the largest single demand cluster you are missing (~133k/mo across ~201 codes), competitors win it with <b>zero backlinks</b> (pure structure + breadth + internal linking), and your domain authority (rank 252, ahead of them) means the same page should rank better for you. Generate programmatically from the ~201 mental-health codes + the mental-health CPT set.</p></div></div></div></div>
+<div class="bp"><div class="bp-head"><h3><span class="bptag link">LINK MAGNET</span>B. Comparison / review page</h3><div class="sub">Silo hub: /compare. The only content type that earns real links.</div></div><div class="bp-body"><div class="ev"><b>Evidence:</b> Twofold /compare pages avg <b>1,579 words, 8 H2, comparison table, FAQ, author</b>, and the silo earns <b>170 referring domains</b>. Naming: '[X] Review: Features, Pricing & Who It's For (2026)', '[X] vs Twofold', 'Best [X] Alternative'.</div><div class="callout bad" style="margin:8px 0 10px;font-size:13px"><b>Mentalyc now:</b> <b>Zero comparison pages.</b> You already rank #1 for 'mentalyc vs upheal', 'upheal review' and 'ai therapy notes comparison' with one-off content, so a real /compare silo would compound, mainly for links and AI-citation (the searches themselves are thin).</div><div class="bp-grid"><div><div class="note" style="font-size:12px;color:#5a6678;margin-bottom:4px">BUILD THIS</div><div class="skeleton"><span class="note">URL</span> /compare/mentalyc-vs-upheal   <span class="note">(+ /upheal-review, /upheal-alternatives)</span>
+<span class="h1">H1</span>  Mentalyc vs Upheal (2026): Honest Comparison
+<span class="el">[box]</span> Verdict: who each is best for <span class="note">(AIO)</span>
+<span class="h2">H2</span>  At a glance            <span class="el">[TABLE: features x both]</span>
+<span class="h2">H2</span>  Upheal overview (fair)
+<span class="h2">H2</span>  Features compared
+<span class="h2">H2</span>  Pricing compared       <span class="el">[TABLE]</span>
+<span class="h2">H2</span>  Pros & cons of each
+<span class="h2">H2</span>  Who should choose which
+<span class="h2">H2</span>  The honest verdict
+<span class="el">FAQ</span>  "Is Upheal HIPAA compliant?" ...
+<span class="cta">[CTA]</span> Try Mentalyc free</div></div><div><div class="note" style="font-size:12px;color:#5a6678;margin-bottom:4px">REQUIRED ELEMENTS</div><ul class="chk"><li>Schema: Article + FAQPage + BreadcrumbList + Person</li><li>~1,500-1,700 words; 2 tables (features, pricing)</li><li>Cover: vs Upheal / Blueprint / Supanote / SimplePractice AI; "alternatives"; competitor-brand reviews</li><li>You rank #1 for "mentalyc alternatives" and "vs" terms now, but Supanote and Twofold crowd the page; a real silo holds it</li></ul><p style="font-size:13px;margin-top:10px"><b>Why it wins:</b> It is the single page type that attracts links honestly (170 RD to Twofold's), it intercepts high-intent 'vs / review / alternative' searches, and it gives the AI assistants extractable verdicts to cite.</p></div></div></div></div>
+<div class="bp"><div class="bp-head"><h3><span class="bptag conv">CONVERSION</span>C. Exact-match BOFU landing page</h3><div class="sub">One page per buyer term. Standalone, not the broad product page.</div></div><div class="bp-body"><div class="ev"><b>Evidence:</b> Supanote /hipaa-compliant-ai-therapy-notes: <b>1,052 words, exact-match URL, Product schema, FAQ(7), and UTM-tracked CTAs throughout</b> (hero/navbar/inline). Short and conversion-focused beats long and broad here.</div><div class="callout bad" style="margin:8px 0 10px;font-size:13px"><b>Mentalyc now:</b> Broad product pages with no Product/AggregateRating schema. Supanote's exact-match page (Product schema, FAQ, UTM-tracked CTAs throughout) <b>outranks you #1 vs your #7</b> for 'hipaa compliant ai therapy notes'. You have no exact-match page for it.</div><div class="bp-grid"><div><div class="note" style="font-size:12px;color:#5a6678;margin-bottom:4px">BUILD THIS</div><div class="skeleton"><span class="note">URL</span> /ai-therapy-note-generator   <span class="note">(one per buyer term)</span>
+<span class="h1">H1</span>  AI Therapy Note Generator: Notes in 2 Minutes
+<span class="cta">[hero CTA]</span> Try free, no card + HIPAA/4.6 badges
+<span class="h2">H2</span>  Loved by 30,000+ therapists <span class="el">[proof]</span>
+<span class="h2">H2</span>  How it works            <span class="el">[3 steps]</span>
+<span class="h2">H2</span>  Built for compliance    <span class="el">[4 points]</span>
+<span class="h2">H2</span>  Built for your practice <span class="el">[features]</span>
+<span class="h2">H2</span>  Your data, secured      <span class="el">[4 points]</span>
+<span class="el">[demo]</span> Sample input &rarr; finished note
+<span class="el">FAQ</span>  (FAQPage) exact-match questions
+<span class="cta">[CTAs, ~8-12]</span> UTM-tracked throughout</div></div><div><div class="note" style="font-size:12px;color:#5a6678;margin-bottom:4px">REQUIRED ELEMENTS</div><ul class="chk"><li>Schema: Product + SoftwareApplication + AggregateRating + FAQPage</li><li>~1,000-1,200 words, exact-match slug</li><li>~8-12 tracked CTAs (UTM-tagged)</li><li>Sample-output / demo block (the top buyer objection: note quality)</li><li>Build for: ai-therapy-note-generator, hipaa-compliant-ai-progress-notes, ai-scribe-for-therapists, automated-therapy-notes</li></ul><p style="font-size:13px;margin-top:10px"><b>Why it wins:</b> Supanote out-ranks and out-converts on BOFU with these, not with long pages. Exact-match URL + intent-matched copy + CTA density is the formula.</p></div></div></div></div>
+<div class="bp"><div class="bp-head"><h3><span class="bptag conv">BOFU BREADTH</span>D. Solutions / use-case page</h3><div class="sub">Silo hub: /solutions. Captures use-case + specialty intent.</div></div><div class="bp-body"><div class="ev"><b>Evidence:</b> Twofold /solutions/affordable-ai-scribe: <b>4,232 words, persona-driven, a manual-vs-AI table, FAQ, Service + Breadcrumb schema</b>. Sections: benefits grid, manual-vs-AI, persona fit, social proof, internal-link hub.</div><div class="callout bad" style="margin:8px 0 10px;font-size:13px"><b>Mentalyc now:</b> No /solutions silo and no use-case or specialty landing pages; one broad product page per feature, and no manual-vs-AI comparison page anywhere.</div><div class="bp-grid"><div><div class="note" style="font-size:12px;color:#5a6678;margin-bottom:4px">BUILD THIS</div><div class="skeleton"><span class="note">URL</span> /solutions/ai-scribe-for-group-practices
+<span class="h1">H1</span>  AI Scribe for Group Practices
+<span class="h2">H2</span>  Benefits                <span class="el">[feature grid]</span>
+<span class="h2">H2</span>  Manual vs Mentalyc      <span class="el">[TABLE without/with]</span>
+<span class="h2">H2</span>  Built for [personas]    <span class="el">[3-4 personas]</span>
+<span class="h2">H2</span>  Loved by clinicians     <span class="el">[proof]</span>
+<span class="h2">H2</span>  Learn more  <span class="el">[internal links to silos]</span>
+<span class="el">FAQ</span> + breadcrumb nav</div></div><div><div class="note" style="font-size:12px;color:#5a6678;margin-bottom:4px">REQUIRED ELEMENTS</div><ul class="chk"><li>Schema: Service + FAQPage + BreadcrumbList</li><li>~2,500-4,000 words</li><li>Build per use-case (solo, group, telehealth) and per specialty</li><li>Doubles as an internal-link hub into the other silos</li></ul><p style="font-size:13px;margin-top:10px"><b>Why it wins:</b> Captures the use-case and specialty long tail, carries a manual-vs-AI table that sells, and routes link equity across the silos.</p></div></div></div></div>
+<div class="bp"><div class="bp-head"><h3><span class="bptag link">MOFU CAPTURE</span>E. Template / worksheet page</h3><div class="sub">Silo hub: /templates and /worksheets. The missing lead-capture layer.</div></div><div class="bp-body"><div class="ev"><b>Evidence:</b> Twofold and Supanote /templates pages (~1,000-1,100 words) list a template + a worked example. Hubs interlink 18-33 template spokes.</div><div class="callout bad" style="margin:8px 0 10px;font-size:13px"><b>Mentalyc now:</b> You already run a <code>/worksheets-and-cheatsheets</code> hub (103 pages) and <code>/note-examples</code> (19), so the silo exists. The gaps: the gated pages show <b>thin on-page content</b>, so they under-rank (you sit at #9 for 'emdr note template', Supanote #1 with a free, ungated page). Un-gate them (show the full content free) and capture email with a soft opt-in, do not rebuild.</div><div class="bp-grid"><div><div class="note" style="font-size:12px;color:#5a6678;margin-bottom:4px">BUILD THIS</div><div class="skeleton"><span class="note">URL</span> /templates/dap-note-template
+<span class="h1">H1</span>  DAP Note Template (with Example)
+<span class="el">[tool]</span> Fillable template, full content free <span class="cta">(soft opt-in, not a hard gate)</span>
+<span class="h2">H2</span>  What a DAP note is
+<span class="h2">H2</span>  The template (copy/download)
+<span class="h2">H2</span>  A filled example
+<span class="h2">H2</span>  Generate it automatically <span class="cta">[Try Mentalyc]</span>
+<span class="el">FAQ</span> + related templates</div></div><div><div class="note" style="font-size:12px;color:#5a6678;margin-bottom:4px">REQUIRED ELEMENTS</div><ul class="chk"><li>Schema: HowTo + FAQPage + BreadcrumbList</li><li>A soft email opt-in captures leads without the hard gate that costs you rankings today</li><li>Embed the note generator (Blueprint = product demo)</li></ul><p style="font-size:13px;margin-top:10px"><b>Why it wins:</b> It turns reference traffic into emails (the funnel gap), and the embedded generator is a live product demo that AI Overviews cannot replace.</p></div></div></div></div>
+<div class="bp"><div class="bp-head"><h3><span class="bptag prog">AI-OVERVIEW CAPTURE</span>F. Answers / wiki silo</h3><div class="sub">Silo hub: /answers (or /ai-scribe-wiki). Fixes the MOFU/TOFU AI invisibility.</div></div><div class="bp-body"><div class="ev"><b>Evidence:</b> Twofold /ai-scribe-wiki uses real clinician <b>questions</b> as headings ('Is AI scribe HIPAA compliant?', 'Do insurance companies accept AI-generated notes?', 'Why does writing SOAP notes take so long?'), targeting the exact natural-language queries that trigger AI Overviews.</div><div class="callout bad" style="margin:8px 0 10px;font-size:13px"><b>Mentalyc now:</b> No Q&A or wiki silo. Across the AI sweep you are <b>recommended on 0 of 29 top-funnel and 0 of 19 mid-funnel questions</b> (your content is cited there, but the assistant never names you as the tool to use); only on buyer-stage questions are you the pick. Supanote ranks #1 for 'are AI therapy notes HIPAA compliant', where you do not appear.</div><div class="bp-grid"><div><div class="note" style="font-size:12px;color:#5a6678;margin-bottom:4px">BUILD THIS</div><div class="skeleton"><span class="note">URL</span> /answers/are-ai-therapy-notes-hipaa-compliant
+<span class="h1">H1</span>  Are AI Therapy Notes HIPAA Compliant?
+<span class="el">[box]</span> 40-word direct answer <span class="note">(AIO-extractable)</span>
+<span class="h2">H2</span>  The short answer
+<span class="h2">H2</span>  What to check before you trust one
+<span class="h2">H2</span>  How Mentalyc handles it
+<span class="el">FAQ</span> + related questions
+<span class="cta">[CTA]</span> Try Mentalyc</div></div><div><div class="note" style="font-size:12px;color:#5a6678;margin-bottom:4px">REQUIRED ELEMENTS</div><ul class="chk"><li>Schema: FAQPage / QAPage + BreadcrumbList</li><li>Seed from the question sweep: you are cited but recommended on 0 of 29 TOFU and 0 of 19 MOFU questions, so build the page that makes you the named answer</li><li>Lead each with a clean extractable answer block so Google/LLMs cite you</li></ul><p style="font-size:13px;margin-top:10px"><b>Why it wins:</b> You are the most-cited domain already, but never the recommendation on mid- and top-funnel questions. This silo is built to make you the named, cited answer there.</p></div></div></div></div>
+<h2>Build order (fastest payback first)</h2>
+<table class="data"><thead><tr><th>Order</th><th>Build</th><th>Type</th><th>Effort</th><th>Time to signal</th></tr></thead><tbody><tr><td>1</td><td>Comparison silo (/compare + 'alternatives')</td><td>Link magnet + BOFU</td><td>Low-Med</td><td>4-8 wks</td></tr><tr><td>2</td><td>Exact-match BOFU pages</td><td>Conversion</td><td>Low</td><td>4-8 wks</td></tr><tr><td>3</td><td>Answers/wiki silo (the 50 questions)</td><td>AI-Overview capture</td><td>Med</td><td>6-12 wks</td></tr><tr><td>4</td><td>ICD-10 + CPT programmatic silo (~250-350 pages)</td><td>The volume</td><td>High</td><td>8-20 wks</td></tr><tr><td>5</td><td>Templates (un-gated for SEO) + Solutions silos</td><td>MOFU + use-case</td><td>Med-High</td><td>8-16 wks</td></tr></tbody></table>
+<div class="callout info"><strong>Programmatic build note:</strong> Blueprint A is generated from a data set (the ~201 deduped mental-health ICD-10 codes + the mental-health CPT set + DSM-5), one page per code from one template, then a licensed-clinician review pass for E-E-A-T. That is how Twofold and Blueprint shipped hundreds of code pages.</div>
+<p><a href="how-they-win.html">&larr; The summary of how they win</a> &middot; <a href="content-onpage.html">Site structure plan &rarr;</a> &middot; <a href="roadmap.html">Where this sits in the roadmap &rarr;</a></p>
+</main>
+<footer class="foot">Local working draft for review. Estimates from public tools (DataForSEO, US organic), to be reconciled to first-party SEMrush / GSC / GA4. Not for distribution.</footer>
+
+<script>if(window.mermaid){mermaid.initialize({startOnLoad:true,theme:'default',flowchart:{useMaxWidth:true,htmlLabels:true,rankSpacing:95,nodeSpacing:38,padding:18}});}</script>
+</body></html>
