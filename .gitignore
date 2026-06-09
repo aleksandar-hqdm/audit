@@ -1,4 +1,6 @@
 build_site.py
+build_knowledge.py
+SETUP-CHATBOT.md
 __pycache__/
 *.pyc
 .DS_Store

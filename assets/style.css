@@ -170,3 +170,9 @@ ul{max-width:84ch} li{margin:3px 0}
   .chatpanel{right:0;bottom:0;width:100vw;max-width:100vw;height:82vh;max-height:82vh;border-radius:14px 14px 0 0}
   .chatfab{right:12px;bottom:12px}
 }
+.msg.typing{padding:12px 14px}
+.dots{display:inline-flex;gap:4px}
+.dots i{width:6px;height:6px;border-radius:50%;background:#9aa6bd;display:block;animation:cbl 1s infinite}
+.dots i:nth-child(2){animation-delay:.15s}
+.dots i:nth-child(3){animation-delay:.3s}
+@keyframes cbl{0%,60%,100%{opacity:.3}30%{opacity:1}}

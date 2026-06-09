@@ -2,7 +2,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
 <title>Funnel | Mentalyc Recovery Report</title>
-<link rel="stylesheet" href="assets/style.css?v=826d707c">
+<link rel="stylesheet" href="assets/style.css?v=7ee02e07">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
 </head><body>
@@ -73,22 +73,35 @@ new Chart(document.getElementById("funnelD"),{"type": "doughnut", "data": {"labe
   toggle.onclick=function(){ sheet.classList.contains('on')? close():open(); };
   window.addEventListener('resize',function(){ if(window.innerWidth>820 && sheet.classList.contains('on')) close(); });
 })();
-/* ---------- self-contained project chatbot ---------- */
+/* ---------- project chatbot (live Vercel agent + local KB fallback) ---------- */
 (function(){
   var fab=document.getElementById('chatfab'), panel=document.getElementById('chatpanel');
   if(!fab||!panel||!window.KB) return;
   var log=document.getElementById('chatlog'), chips=document.getElementById('chatchips'),
       form=document.getElementById('chatform'), input=document.getElementById('chatin'),
-      KB=window.KB, greeted=false;
+      KB=window.KB, greeted=false, convo=[], spent=0;
+  var CHAT_BASE="";
+  var CHAT_API=(CHAT_BASE? CHAT_BASE.replace(/\/+$/,''):'')+"/api/chat";
+  var API_ON=!!CHAT_BASE || /vercel\.app$/.test(location.hostname);
   var STARTERS=["What went wrong?","Is it a penalty?","What's the biggest opportunity?","Who are the competitors?","What should we build first?"];
-  function add(role,html){ var d=document.createElement('div'); d.className='msg '+role; d.innerHTML=html; log.appendChild(d); log.scrollTop=log.scrollHeight; }
+  function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+  function add(role,html){ var d=document.createElement('div'); d.className='msg '+role; d.innerHTML=html; log.appendChild(d); log.scrollTop=log.scrollHeight; return d; }
   function norm(s){ return ' '+s.toLowerCase().replace(/[^a-z0-9 ]/g,' ').replace(/\s+/g,' ').trim()+' '; }
   function score(q,e){ var s=0,Q=norm(q); (e.k||[]).forEach(function(kw){ kw=(' '+kw.toLowerCase().trim()+' '); if(kw.trim().indexOf(' ')>=0){ if(Q.indexOf(kw)>=0) s+=2*kw.trim().split(' ').length; } else if(Q.indexOf(kw)>=0) s+=2; }); return s; }
   function pick(q){ var best=null,bs=0; KB.forEach(function(e){ if(e.fallback)return; var sc=score(q,e); if(sc>bs){bs=sc;best=e;} }); if(!best||bs<2){ return KB.filter(function(e){return e.fallback;})[0]; } return best; }
   function tlink(e){ return e.t? '<a class="msg-link" href="'+e.t+'.html">Open the '+e.tl+' tab &rarr;</a>':''; }
   function showChips(list){ chips.innerHTML=''; (list||STARTERS).forEach(function(c){ var b=document.createElement('button'); b.className='chip'; b.textContent=c; b.onclick=function(){ ask(c); }; chips.appendChild(b); }); }
-  function ask(q){ add('user', q.replace(/</g,'&lt;')); var e=pick(q); setTimeout(function(){ add('bot', e.a + tlink(e)); showChips(e.next); }, 140); }
-  function greet(){ if(greeted)return; greeted=true; add('bot', "Hi! I can answer questions about this Mentalyc audit: the diagnosis, the opportunity, competitors, what to build, links, PR and the roadmap. Ask me, or pick one:"); showChips(STARTERS); }
+  function kbAnswer(q){ var e=pick(q); add('bot', e.a+tlink(e)); convo.push({role:'assistant',content:e.a}); showChips(e.next); }
+  function ask(q){ q=(q||'').trim(); if(!q) return;
+    add('user', esc(q)); convo.push({role:'user',content:q});
+    if(!API_ON){ setTimeout(function(){ kbAnswer(q); }, 140); return; }
+    var t=add('bot typing','<span class="dots"><i></i><i></i><i></i></span>');
+    fetch(CHAT_API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({messages:convo.slice(-12),spent:spent})})
+      .then(function(r){return r.json();})
+      .then(function(d){ t.remove(); add('bot', esc(d.reply||'').replace(/\n/g,'<br>')); convo.push({role:'assistant',content:d.reply||''}); if(typeof d.spent==='number') spent=d.spent; showChips(STARTERS); })
+      .catch(function(){ t.remove(); kbAnswer(q); });
+  }
+  function greet(){ if(greeted)return; greeted=true; add('bot', "Hi! I can answer questions about this Mentalyc audit: the diagnosis, the opportunity, competitors, what to build, links, PR and the roadmap"+(API_ON?", with live data where useful":"")+". Ask me, or pick one:"); showChips(STARTERS); }
   fab.onclick=function(){ var on=panel.classList.toggle('on'); fab.classList.toggle('hide',on); if(on){ greet(); input.focus(); } };
   panel.querySelector('.chatx').onclick=function(){ panel.classList.remove('on'); fab.classList.remove('hide'); };
   form.onsubmit=function(e){ e.preventDefault(); var q=input.value.trim(); if(!q)return; input.value=''; ask(q); };
