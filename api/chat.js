@@ -16,27 +16,51 @@ const MAX_OUT = +(process.env.MAX_OUT_TOKENS || 700);
 const MAX_TOOLCALLS = 3;
 
 const SYS_PROMPT =
-  "You are the Audit Assistant for a competitive SEO recovery audit of Mentalyc (an AI therapy-notes SaaS), " +
-  "prepared by Aleksandar Ackovski / Growth Radical. Answer questions about THIS project using only the PROJECT KNOWLEDGE " +
-  "provided below and the dataforseo_serp tool. Be accurate, concise and plain-spoken; lead with the answer. " +
-  "Cite specific numbers from the knowledge when relevant, and point the reader to the right report tab by name " +
-  "(for example 'see the Backlinks tab'). If the knowledge does not cover something, say so plainly rather than guessing. " +
-  "Use the dataforseo_serp tool only when the user asks about CURRENT/live rankings that the report would not already contain, " +
-  "and keep it to what is needed. Never invent figures. Do not use the em dash character. Keep answers under about 180 words unless asked for more.";
+  "You are the Audit Assistant for a competitive SEO recovery audit of Mentalyc (an AI therapy-notes SaaS), prepared by " +
+  "Aleksandar Ackovski at Growth Radical. Think of yourself as a sharp, friendly SEO strategist on the team: you know this " +
+  "audit cold and you explain it like a helpful colleague, not a search box.\n\n" +
+  "How to answer:\n" +
+  "- Give a real, direct answer FIRST, in one or two plain sentences. Then add the specifics (numbers, named competitors, " +
+  "examples) that back it up. Never reply with just 'see the X tab' or a deflection.\n" +
+  "- Ground everything in the CORE PROJECT FACTS and the retrieved detail below, and in the dataforseo_serp tool for current " +
+  "rankings. You may connect and synthesize ideas across the material to give a fuller answer, but never invent a specific " +
+  "number, name, date or claim that is not supported.\n" +
+  "- You can and should answer questions ABOUT the report itself (who made it, when, how, what data and methodology, scope, " +
+  "how thorough it was). That information is in the CORE PROJECT FACTS.\n" +
+  "- If something genuinely is not covered, say so briefly and friendly, then offer what you CAN help with. Do not stonewall.\n" +
+  "- Where it helps, point the reader to the relevant report tab by name (for example 'the Backlinks tab').\n" +
+  "- Use dataforseo_serp only for live/current rankings the report would not already contain.\n\n" +
+  "Voice: warm, confident, plain-spoken, a little personality is good. Lead with the answer. Keep it tight, usually under " +
+  "about 160 words, unless the user asks for depth. Never use the em dash character.";
 
 let KB = null;
 function kb() {
   if (!KB) { try { KB = JSON.parse(fs.readFileSync(path.join(__dirname, "knowledge.json"), "utf8")); } catch (e) { KB = []; } }
   return KB;
 }
+// query expansion so casual phrasing still hits the right material
+const EXPAND = {
+  beat: "competitors win mechanism", beaten: "competitors win", lose: "beaten competitors", losing: "beaten competitors",
+  who: "about prepared author", author: "about prepared", made: "about prepared methodology", wrote: "about prepared",
+  long: "about methodology thorough", time: "about methodology thorough", took: "about methodology",
+  cost: "pricing conversion budget", links: "backlinks referring", penalty: "penalty diagnosis rankings",
+  build: "page blueprints silo", recommend: "ai recommendation cited named", opportunity: "code cluster opportunity"
+};
+function expand(words) {
+  const out = words.slice();
+  words.forEach(function (w) { if (EXPAND[w]) EXPAND[w].split(" ").forEach(function (x) { out.push(x); }); });
+  return out;
+}
 function retrieve(query, k) {
-  const words = (String(query || "").toLowerCase().match(/[a-z0-9]+/g) || []).filter(function (w) { return w.length > 2; });
-  if (!words.length) return kb().slice(0, 3);
-  const scored = kb().map(function (c) {
+  let words = (String(query || "").toLowerCase().match(/[a-z0-9]+/g) || []).filter(function (w) { return w.length > 2; });
+  const pool = kb().filter(function (c) { return !c.pin; });
+  if (!words.length) return pool.slice(0, 3);
+  words = expand(words);
+  const scored = pool.map(function (c) {
     const title = (c.title || "").toLowerCase(), text = (c.text || "").toLowerCase();
     let s = 0; words.forEach(function (w) { if (title.indexOf(w) >= 0) s += 3; if (text.indexOf(w) >= 0) s += 1; });
     return { c: c, s: s };
-  }).filter(function (x) { return x.s > 0; }).sort(function (a, b) { return b.s - a.s; }).slice(0, k || 6);
+  }).filter(function (x) { return x.s > 0; }).sort(function (a, b) { return b.s - a.s; }).slice(0, k || 7);
   return scored.map(function (x) { return x.c; });
 }
 
@@ -114,11 +138,13 @@ module.exports = async function (req, res) {
     return res.json({ reply: "The assistant has reached today's overall usage limit. Please try again tomorrow.", spent: sessionSpent, capped: "daily" });
   }
 
+  const fmt = function (c) { return "[" + c.tab + " tab] " + c.title + "\n" + c.text; };
+  const pinned = kb().filter(function (c) { return c.pin; }).map(fmt).join("\n\n---\n\n");
   const lastUser = msgs[msgs.length - 1].content;
-  const ctx = retrieve(lastUser, 6).map(function (c) { return "[" + c.tab + "] " + c.title + "\n" + c.text; }).join("\n\n---\n\n");
+  const ctx = retrieve(lastUser, 7).map(fmt).join("\n\n---\n\n");
   const system = [
-    { type: "text", text: SYS_PROMPT, cache_control: { type: "ephemeral" } },
-    { type: "text", text: "PROJECT KNOWLEDGE (retrieved for this question):\n\n" + ctx }
+    { type: "text", text: SYS_PROMPT + "\n\n=== CORE PROJECT FACTS (always true) ===\n\n" + pinned, cache_control: { type: "ephemeral" } },
+    { type: "text", text: "=== MORE DETAIL RETRIEVED FOR THIS QUESTION ===\n\n" + ctx }
   ];
 
   let convo = msgs.slice(), cost = 0, dfsCalls = 0, finalText = "";
