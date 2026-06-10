@@ -228,3 +228,14 @@ td.num{font-weight:700;color:var(--muted);text-align:center;width:34px}
   .ns-go a{color:var(--violet);font-weight:700;font-size:13px}
   .ns-chev{color:var(--violet);font-size:20px;line-height:1}
 }
+/* ---- retro sound toggle (injected by app js) ---- */
+.sndtoggle{position:fixed;left:14px;bottom:14px;z-index:70;display:inline-flex;align-items:center;gap:7px;padding:7px 11px;
+  font-family:var(--font-mono);font-weight:700;font-size:.7rem;letter-spacing:.05em;color:var(--ink);background:var(--face);
+  border:2px solid;border-color:var(--b-light) var(--b-dark) var(--b-dark) var(--b-light);
+  box-shadow:inset -1px -1px 0 var(--b-lo),inset 1px 1px 0 var(--b-hi),var(--shadow-hard-sm)}
+.sndtoggle:active{border-color:var(--b-dark) var(--b-light) var(--b-light) var(--b-dark);box-shadow:inset 1px 1px 0 var(--b-lo),inset -1px -1px 0 var(--b-hi)}
+.sndtoggle svg{width:15px;height:15px;color:var(--mint)}
+.sndtoggle.is-off{color:var(--muted-2)}
+.sndtoggle.is-off svg{color:var(--rose)}
+.sndtoggle__t{white-space:nowrap}
+@media (max-width:560px){.sndtoggle__t{display:none}.sndtoggle{padding:9px;gap:0}}

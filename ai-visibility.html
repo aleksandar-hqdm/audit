@@ -4,7 +4,7 @@
 <title>AI Visibility | Mentalyc Recovery Report</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=63b54c33">
+<link rel="stylesheet" href="assets/style.css?v=8067fef9">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
 </head><body>
@@ -120,6 +120,54 @@ new Chart(document.getElementById("aiEng"),{"type": "bar", "data": {"labels": ["
   fab.onclick=function(){ var on=panel.classList.toggle('on'); fab.classList.toggle('hide',on); if(on){ greet(); input.focus(); } };
   panel.querySelector('.chatx').onclick=function(){ panel.classList.remove('on'); fab.classList.remove('hide'); };
   form.onsubmit=function(e){ e.preventDefault(); var q=input.value.trim(); if(!q)return; input.value=''; ask(q); };
+})();
+/* ---------- retro sound (SEvO theme; default ON, toggle bottom-left) ---------- */
+(function(){
+  var KEY='mentalyc-sound';
+  var enabled=(localStorage.getItem(KEY)||'on')==='on';
+  var unlocked=false, ctx=null, master=null;
+  function ensureCtx(){ if(ctx)return ctx; var AC=window.AudioContext||window.webkitAudioContext; if(!AC)return null;
+    try{ctx=new AC();}catch(e){return null;} master=ctx.createGain(); master.gain.value=0.9; master.connect(ctx.destination); return ctx; }
+  function tone(f,start,dur,type,vol){ if(!ctx)return; var t0=ctx.currentTime+start;
+    var o=ctx.createOscillator(),g=ctx.createGain(); o.type=type||'square'; o.frequency.setValueAtTime(f,t0);
+    g.gain.setValueAtTime(0.0001,t0); g.gain.exponentialRampToValueAtTime(vol,t0+0.006); g.gain.exponentialRampToValueAtTime(0.0001,t0+dur);
+    o.connect(g); g.connect(master); o.start(t0); o.stop(t0+dur+0.02); }
+  function slide(f1,f2,dur,vol){ if(!ctx)return; var t0=ctx.currentTime;
+    var o=ctx.createOscillator(),g=ctx.createGain(); o.type='square'; o.frequency.setValueAtTime(f1,t0); o.frequency.exponentialRampToValueAtTime(f2,t0+dur);
+    g.gain.setValueAtTime(0.0001,t0); g.gain.exponentialRampToValueAtTime(vol,t0+0.006); g.gain.exponentialRampToValueAtTime(0.0001,t0+dur);
+    o.connect(g); g.connect(master); o.start(t0); o.stop(t0+dur+0.02); }
+  var S={
+    click:function(){ tone(880,0,0.05,'square',0.06); tone(640,0.018,0.04,'square',0.045); },
+    nav:function(){ tone(740,0,0.05,'square',0.06); tone(988,0.05,0.07,'square',0.055); },
+    open:function(){ tone(523,0,0.06,'square',0.06); tone(784,0.06,0.09,'square',0.06); },
+    close:function(){ tone(660,0,0.06,'square',0.055); tone(440,0.06,0.09,'square',0.055); },
+    on:function(){ slide(380,1200,0.18,0.06); }, off:function(){ slide(1100,320,0.18,0.06); }
+  };
+  function play(name,force){ if((!enabled&&!force)||!unlocked)return; if(!ensureCtx())return;
+    if(ctx.state==='suspended'){ try{ctx.resume();}catch(e){} } var fn=S[name]; if(fn){ try{fn();}catch(e){} } }
+  window.addEventListener('pointerdown',function(){ unlocked=true; },{capture:true,passive:true});
+  window.addEventListener('keydown',function(){ unlocked=true; },{capture:true});
+  document.addEventListener('click',function(e){
+    var t=e.target.closest&&e.target.closest('.sndtoggle, .win__controls b, .mainnav a, .foot a, .chip, .itfilters button, a, button');
+    if(!t)return;
+    if(t.matches('.sndtoggle'))return;
+    if(t.matches('.win__controls b'))return play(t.textContent.indexOf('×')>-1?'close':'click');
+    if(t.matches('.mainnav a, .foot a'))return play('nav');
+    play('click');
+  },true);
+  function icon(on){ return on
+    ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M16 9a3 3 0 0 1 0 6M18.5 7a6 6 0 0 1 0 10"/></svg>'
+    : '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M17 9l5 6M22 9l-5 6"/></svg>'; }
+  function render(b){ b.innerHTML=icon(enabled)+'<span class="sndtoggle__t">'+(enabled?'SND ON':'SND OFF')+'</span>'; }
+  function inject(){ if(document.querySelector('.sndtoggle'))return;
+    var b=document.createElement('button'); b.className='sndtoggle'+(enabled?'':' is-off'); b.type='button';
+    b.setAttribute('aria-label','Toggle retro sound effects'); b.setAttribute('aria-pressed',String(enabled)); render(b);
+    b.addEventListener('click',function(){ unlocked=true;
+      if(enabled){ play('off',true); enabled=false; } else { enabled=true; play('on'); }
+      localStorage.setItem(KEY, enabled?'on':'off');
+      b.classList.toggle('is-off',!enabled); b.setAttribute('aria-pressed',String(enabled)); render(b); });
+    document.body.appendChild(b); }
+  if(document.body){ inject(); } else { document.addEventListener('DOMContentLoaded',inject); }
 })();
 </script>
 </body></html>
