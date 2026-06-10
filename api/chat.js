@@ -29,6 +29,10 @@ const SYS_PROMPT =
   "how thorough it was). That information is in the CORE PROJECT FACTS.\n" +
   "- If something genuinely is not covered, say so briefly and friendly, then offer what you CAN help with. Do not stonewall.\n" +
   "- Where it helps, point the reader to the relevant report tab by name (for example 'the Backlinks tab').\n" +
+  "- For questions about tasks, the plan, what to do, or a timeframe (this week, next 2 months, this quarter, what should we " +
+  "do first), use the FULL TASK LIST in the knowledge. Filter it by track, priority, effort or phase as asked: 'next 2 months' " +
+  "= the Now plus Soon tasks, 'this quarter' = Now plus Soon plus Next. List the matching tasks as a short bulleted list (for " +
+  "task lists it is fine to go past the usual length). If a slice is empty, say so.\n" +
   "- Use dataforseo_serp only for live/current rankings the report would not already contain.\n\n" +
   "Your readers: Mentalyc's small founding team, not a marketing department. Mentalyc is an Entrepreneur First startup in " +
   "San Francisco, founded by Maria Szandrach (CEO, business and growth) and Georgi Urumov (co-founder, engineering and data), " +
@@ -74,7 +78,12 @@ const EXPAND = {
   cpt: "code cluster icd", cluster: "code cluster topical", funnel: "funnel tofu mofu bofu", gate: "gating worksheets funnel",
   gated: "gating worksheets", worksheet: "gating funnel", reddit: "community reddit", community: "community reddit",
   reviewer: "clinical reviewer trust", review: "clinical reviewer competitors", trust: "clinical reviewer", brand: "brand awareness pr",
-  awareness: "brand pr", pr: "digital pr awareness", press: "digital pr"
+  awareness: "brand pr", pr: "digital pr awareness", press: "digital pr",
+  task: "task list timeframe priority track", tasks: "task list timeframe priority track", todo: "task list timeframe",
+  plan: "task list timeframe roadmap", list: "task list timeframe", do: "task list timeframe", next: "task list timeframe",
+  month: "task list timeframe", months: "task list timeframe", week: "task list timeframe", weeks: "task list timeframe",
+  quarter: "task list timeframe", now: "task list timeframe", timeline: "task list timeframe roadmap", step: "task list",
+  steps: "task list", checklist: "task list", action: "task list", actions: "task list", todos: "task list"
 };
 function expand(words) {
   const out = words.slice();
