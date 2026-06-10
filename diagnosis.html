@@ -2,12 +2,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
 <title>Diagnosis | Mentalyc Recovery Report</title>
-<link rel="stylesheet" href="assets/style.css?v=7e8b8135">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css?v=63b54c33">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
 </head><body>
 <header class="topbar">
-  <div class="brand">Mentalyc <span>Growth Recovery</span></div>
+  <div class="brand"><span class="mark">M</span> Mentalyc <span>Growth Recovery</span></div>
   <div class="meta">Prepared by Aleksandar Ackovski / Growth Radical &middot; June 2026 &middot; DataForSEO + public sources</div>
 </header>
 <nav class="mainnav">
@@ -16,6 +18,9 @@
 </nav>
 <div id="navsheet" class="navsheet" aria-hidden="true"></div>
 <main class="wrap">
+<div class="win">
+<div class="win__bar"><span class="ic">&#9635;</span><span class="ttl">mentalyc-audit &middot; Diagnosis</span><span class="win__controls"><b>_</b><b>&#9633;</b><b>&times;</b></span></div>
+<div class="win__body">
 <h1>Diagnosis: what is actually wrong</h1>
 <p class="lede">The headline number (organic traffic down ~74%) hides the mechanism. Rankings fell meaningfully (about 30%), but clicks fell more than twice as fast (~74%). That gap is the AI-Overview effect: it is mainly a clicks problem (AI answers in-page) compounded by competitors out-publishing you, not a penalty. Below: your four hypotheses graded against the data, what you did not flag, and why conversion fell.</p>
 <h2>Your hypotheses, graded against the data</h2>
@@ -45,6 +50,7 @@
 <table class="data"><thead><tr><th>Finding</th><th>Detail</th><th>Impact</th></tr></thead><tbody><tr><td>robots.txt declares no sitemap (minor)</td><td>Verified by direct fetch: the only Sitemap line is commented out (<code>#sdfSitemap:</code>). A real misconfiguration worth fixing, but it does not block indexing on its own; sitemaps are normally submitted in Search Console, which we cannot see.</td><td>Hygiene; confirm in their GSC</td></tr><tr><td>No public sitemap for the Webflow site</td><td>Verified across 8 paths and for the Googlebot user-agent (no cloaking): all 404; only <code>/blog/sitemap.xml</code> resolves. <b>But the Webflow pages are indexed and ranking anyway</b> (the worksheets hub ranks #1 for 'mentalyc worksheets'), so Google discovers them via internal links. Whether a sitemap is submitted in their Search Console we cannot confirm without access, so treat this as likely minor.</td><td>Hygiene; confirm in their GSC</td></tr><tr><td>FAQ schema inconsistent</td><td>Mentalyc has FAQPage schema on some pages (MSE) but not others (DAP, ICD F43.23). Twofold and Supanote use it consistently.</td><td>AI-Overview / PAA citation</td></tr><tr><td>Some flagship pages stale</td><td>DAP notes <code>dateModified</code> is 2025-09-17 (9 months). Freshness is a ranking and trust signal for YMYL.</td><td>Rankings / E-E-A-T</td></tr><tr><td>No clinical reviewer (competitors have one)</td><td>Checked in a live browser: Mentalyc shows an author byline ('Marissa Moore, LPC, LCPC') and a date, but <b>no medical reviewer</b>. Supanote shows 'Reviewed by Nick Morvan, LMFT' and Twofold shows a 'Medical Review Board, Reviewed by Dr. Dora Matis, MD'. For YMYL this reviewer signal is an E-E-A-T gap the competitors own and you do not.</td><td>Trust / E-E-A-T</td></tr><tr><td>Toxic anchor footprint</td><td>Link-vendor anchors ('TG @BHS_LINKS', '@SEO_ANOMALY') with 60+ referring domains each. Possible contributor to an algorithmic demotion.</td><td>Risk</td></tr></tbody></table>
 <div class="callout good"><strong>Verified in a live browser:</strong> These on-page findings were checked in a rendered browser with JavaScript executed (not just raw HTML), and the robots/sitemap facts were re-fetched directly. Mentalyc shows an author byline and a publish date but no medical-reviewer line; Supanote and Twofold both show a clinical reviewer.</div>
 <p><a href="content-onpage.html">Full content &amp; on-page analysis &rarr;</a> &middot; <a href="competitors.html">How competitors are built &rarr;</a></p>
+</div></div>
 </main>
 <footer class="foot">Local working draft for review. Estimates from public tools (DataForSEO, US organic), to be reconciled to first-party SEMrush / GSC / GA4. Not for distribution.</footer>
 <button id="chatfab" class="chatfab" aria-label="Ask about this audit"><b>Ask</b>&nbsp;about this audit</button>
